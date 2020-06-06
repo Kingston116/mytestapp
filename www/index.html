@@ -10,6 +10,9 @@
         <script src="jqueryMobile/jquery-1.10.2.min.js"></script>
         <script src="jqueryMobile/jquery.mobile-1.4.0.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
         <title>News App</title>
         <style>
             /*{
@@ -47,15 +50,15 @@
             }
         </style>
     </head>
-    <body>
-    <div id="mySidenav" class="sidenav">
+    <body >
+    <!-- <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
       <a href="#">About</a>
       <a href="#">Services</a>
       <a href="#">Clients</a>
       <a href="#">Contact</a>
-    </div>
-        <div data-role="page" id="main" style="overflow-y:auto;">
+    </div> -->
+        <div data-role="page" id="main" style="overflow-y:auto;" data-theme="b">
             <div data-role="header" data-position="fixed">
                 <!-- Use any element to open the sidenav -->
                 <ul style="padding-left: 0px;">
@@ -67,10 +70,17 @@
             </div>
             <div id="content"></div>
             <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                <ul>
+                    <li style="width: 33%;"><a href="#" data-icon="grid" class="ui-btn-active">News</a></li>
+                    <li style="width: 33%;"><a href="#" data-icon="star">About Us</a></li>
+                    <li style="width: 33%;"><a href="#" data-icon="gear">Setting</a></li>
+                  </ul>
+                </div>
                 <h1>Powered by Appmetric</h1>
              </div>
         </div>
-        <div data-role="page" id="news" style="overflow-y:auto;">
+        <div data-role="page" id="news" style="overflow-y:auto;" data-theme="b">
             <div data-role="header" data-position="fixed">
                 <ul style="padding-left: 0px;">
                     <li>
@@ -85,15 +95,41 @@
                    <input type="hidden" id="location"/>
                    <div class="center-wrapper" id="backgroundTile">
                        <div id="detailedTitle" style="height:270px"></div>
-                       <audio style="width:100%" id="audio" src="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3" controls>
+                       <audio style="width:100%" id="audio" src="" controls>
 
-                          </audio>
+                        </audio>
+                        <p id="buffer">Buffering : <progress  max="100"></progress></p>
+                        
                        <input type="button" id="recordSound" data-icon="audio" value="Comment" class="center-button" data-inline="true"/>
 <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
-                        <audio style="width:100%" id="recordedAudio" src="" controls>
-
-                        </audio> <input type="button" id="upload" value="Send">
-                        <div id="detailed"></div>
+                        <div display: table; style="width: 100%;" id="recordedComment">
+                            <audio style="width:70%;float: left;" id="recordedAudio" src="" controls>
+                            </audio>
+                            <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="ok"  id="upload" data-icon="check">
+                            
+                                <!-- <i class="material-icons">&#xe163;</i> -->
+                            
+                        </div>
+                        <div data-role="tabs" style="width: 100%;">
+                            <div data-role="navbar">
+                            <ul>
+                                <li><a href="#Text">Text</a></li>
+                                <li><a href="#Comment">Comments</a></li>
+                           </ul>   
+                           <div id="Text" >
+                            <h3>Description</h3>
+                            <div id="detailed"></div>
+                        </div>
+                        
+                        <div id="Comment" >
+                            <h3>Comments</h3>
+                            <p>List of recorded comments</p>
+                            <div id="commentsList"></div>
+                        </div>
+                        </div>
+                        <!-- Tab content -->
+                        
+                    </div>
 
 
                    </div>
@@ -114,7 +150,14 @@
                  </div>
              </div>
 
-            <div data-role="footer" data-position="fixed" style="position:fixed;">
+             <div data-role="footer" data-position="fixed">
+                <div data-role="navbar" >
+                <ul>
+                    <li style="width: 33%;" ><a href="#" data-icon="grid" class="ui-btn-active">News</a></li>
+                    <li style="width: 33%;"><a href="#" data-icon="star">About Us</a></li>
+                    <li style="width: 33%;"><a href="#" data-icon="gear">Setting</a></li>
+                  </ul>
+                </div>
                 <h1>Powered by Appmetric</h1>
              </div>
         </div>

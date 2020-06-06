@@ -31,12 +31,54 @@
              document.addEventListener("online", function(e){
             alert("YOU ARE ONLINE");
             }, false);
-        	$("#recordedAudio").hide();
+            mainaudio = document.getElementById('audio');
+            mainaudio.addEventListener('loadstart', function (e) {
+                document.getElementById("buffer").style.visibility = "visible";
+            });
+            mainaudio.addEventListener('canplay', function (e) {
+                document.getElementById("buffer").style.visibility = "hidden";
+            });
+            document.getElementById('audio').addEventListener('ended', function(){
+                audioPlayer = document.getElementById('audio');
+                if(current_audio_comment_index >= current_audio_list.length){
+                    //alert("No more audio to play for this news");
+                    audioPlayer = document.getElementById('audio');
+                    audioPlayer.src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
+                    audioPlayer.pause();
+                    current_audio_comment_index=0;
+                    return;
+                }
+                nextSong = current_audio_list[current_audio_comment_index];
+                audioPlayer.src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/"+key+"/"+nextSong;
+                try{
+                audioPlayer.load();
+                }
+                catch(s){
+                    
+                }
+                //wait(1000)
+                //audioPlayer.currentTime=0;
+                //audioPlayer.pause();        
+                console.log("playing "+nextSong);
+                audioPlayer.play();
+                /* audioPlayer.play().catch((error) => {
+                    
+                    current_audio_comment_index = current_audio_comment_index-1;
+                    nextSong = current_audio_list[current_audio_comment_index];
+                    audioPlayer.src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/"+key+"/"+nextSong;
+                    console.log("inside playing "+nextSong);
+                    audioPlayer.play();
+                }); */
+                current_audio_comment_index++;
+                //wait(1000)
+                }, false);
+            $("#recordedComment").hide();
+            $("#tabs").tabs();
 	        $("#recordSound").on("tap", function(e) {
 	            e.preventDefault();
-	            if(checkMenuOpen()==false){
+	            /* if(checkMenuOpen()==false){
                     return;
-                  }
+                  } */
 	            var recordingCallback = {};
 
 	            recordingCallback.recordSuccess = handleRecordSuccess;
@@ -59,6 +101,7 @@
 	        $("#recordSoundDialog").on("popupafterclose", function(event, ui) {
 	            clearInterval(recInterval);
 	            stopRecordingSound();
+                window.location.href = "#news";
 	        });
 
 	        $("#stopRecordingSound").on("tap", function(e) {
@@ -84,7 +127,7 @@
 
     function handleRecordSuccess(newFilePath) {
         var currentFilePath = newFilePath;
-        $("#recordedAudio").show();
+        $("#recordedComment").show();
         document.getElementById("recordedAudio").src = newFilePath;
         $("#location").val(currentFilePath);
         $("#playSound").closest('.ui-btn').show();
@@ -107,9 +150,9 @@
     }
 
     function startRecordingSound(recordingCallback) {
-        if(checkMenuOpen() == false){
+        /* if(checkMenuOpen() == false){
         return;
-      }
+      } */
         var recordVoice = function(dirPath) {
             var basePath = "";
 
@@ -190,14 +233,14 @@
 
     function load_home (e) {
     (e || window.event).preventDefault();
-    if(checkMenuOpen() == false){
+    /* if(checkMenuOpen() == false){
         return;
-      }
+      } */
     var panel = '<ul id="menu" style="padding-left: 0px;">';
-    fetch("http://192.168.43.24:5000/news").then((response) => response.json())
+    fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/news").then((response) => response.json())
     .then((data) => {
         for (i = 0; i < Object.keys(data.news).length; i++) {
-            panel += '<li class="li" id="'+Object.keys(data.news)[i]+'"><img class="cimg" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
+            panel += '<li data-transition="pop" class="li" id="'+Object.keys(data.news)[i]+'"><img class="cimg" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
             panel += '<div class="cinner"><p><b>'+Object.keys(data.news)[i]+'</b></p><p>'+data.news[Object.keys(data.news)[i]].description+'</p><div style="clear:both"></div></li>';
         }
         panel += "</ul>"
@@ -215,9 +258,9 @@
     }
 
     function load_menu(){
-        document.getElementById("mainNav").addEventListener('click',openNav,false);
-        document.getElementById("newsNav").addEventListener('click',openNav,false);
-        document.getElementById("closeNav").addEventListener('click',closeNav,false);
+        //document.getElementById("mainNav").addEventListener('click',openNav,false);
+        //document.getElementById("newsNav").addEventListener('click',openNav,false);
+        //document.getElementById("closeNav").addEventListener('click',closeNav,false);
 
         document.addEventListener("backbutton", onBackKeyDown, false);
         document.getElementById("upload").addEventListener('click',upload,false);
@@ -225,74 +268,82 @@
 
     function onBackKeyDown(e) {
        e.preventDefault();
-       if(document.getElementById("mySidenav").style.width == "250px"){
-        closeNav();
-        return;
-      }
-      else{
         window.location.href = "#main";
         currentPage = "HOME";
-      }
     }
     function load_news(element){
       current_audio_comment_index=0;
-      if(checkMenuOpen() == false){
+      /* if(checkMenuOpen() == false){
         return;
-      }
+      } */
       key = element.target.parentElement.children[0].children[0].innerText;
-      $("#recordedAudio").hide();
       window.location.href = "#news";
-      fetch("http://192.168.43.24:5000/detailednews/"+key).then((response) => response.json())
+      $("#recordedComment").hide();
+      fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
         .then((data) => {
             document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');"
             document.getElementById("detailedTitle").innerHTML = "<h2 style='background: rgba(0, 0, 0, 0.75);color:white;'>"+key+"</h2><br/>"
             document.getElementById("detailed").innerHTML = data.description;
-            document.getElementById("audio").src = data.audio_file;
+            //document.getElementById("audio").src = data.audio_file;
+            document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
             document.getElementById("audio").load();
             current_audio_list = data.comments;
+            var commentpanel = '<ul data-role="listview" data-inset="true" style="width:100%">';
+            
+            for(i = 0; i < current_audio_list.length; i++){
+                commentpanel += '<li style="display:flex;"><div style="width:50%"> <a  href="#">Comment </a></div><audio id="player-'+i+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[i]+'" controls></audio></li>';
+            }
+            commentpanel+="</ul>"
+            document.getElementById("commentsList").innerHTML = commentpanel;
         })
         .catch((error) => {
             console.warn(error);
         });
         currentPage = "NEWS";
-        var vid = document.getElementById("audio");
-        vid.onplaying = function() {
-            console.log(current_audio_list);
-            //alert("The audio is now playing");
-        };
-        document.getElementById('audio').addEventListener('ended', function(){
-        if(current_audio_comment_index >= current_audio_list.length){
-            //alert("No more audio to play for this news");
-            return;
-        }
-        nextSong = current_audio_list[current_audio_comment_index];
+        // Initializing values
+        var isPlaying = true;
         audioPlayer = document.getElementById('audio');
-        audioPlayer.src = "http://192.168.43.24/demo/upload/"+key+"/"+nextSong;
-        audioPlayer.load();
-        audioPlayer.play();
-        current_audio_comment_index++;
-        }, false);
+        // On video playing toggle values
+        audioPlayer.onplaying = function() {
+            isPlaying = true;
+        };
+
+        // On video pause toggle values
+        audioPlayer.onpause = function() {
+            isPlaying = false;
+        };
+        
 
     }
 
-function checkMenuOpen(){
+    function wait(milliseconds) { 
+        let timeStart = new Date().getTime(); 
+        while (true) { 
+          let elapsedTime = new Date().getTime() - timeStart; 
+          if (elapsedTime > milliseconds) { 
+            break; 
+          } 
+        } 
+      } 
+
+/* function checkMenuOpen(){
 if(document.getElementById("mySidenav").style.width == "250px"){
     closeNav();
     return false;
   }
-}
+} */
 
     /*add a black background color to body */
-function openNav() {
+/* function openNav() {
   if(checkMenuOpen() == false){
         return;
       }
   document.getElementById("mySidenav").style.width = "250px";
   //document.getElementById("main").style.marginLeft = "250px";
   disableMain();
-}
+} */
 
-function disableMain(){
+/* function disableMain(){
    if(currentPage=="HOME"){
    document.getElementById("main").style.backgroundColor = "rgba(0,0,0,0.4)";
    document.getElementById("main").disabled = true;
@@ -301,21 +352,21 @@ function disableMain(){
     document.getElementById("news").style.backgroundColor = "rgba(0,0,0,0.4)";
     document.getElementById("news").disabled = true;
     }
-}
+} */
 
-function enableMain(){
+/* function enableMain(){
    if(currentPage=="HOME"){document.getElementById("main").style.backgroundColor = "white";
    document.getElementById("main").disabled = false;}
     if(currentPage=="NEWS"){document.getElementById("news").style.backgroundColor = "white";
     document.getElementById("news").disabled = false;}
-}
+} */
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-function closeNav() {
+/* function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   //document.getElementById("main").style.marginLeft = "0";
   enableMain();
-}
+} */
 
 
 function upload(){
@@ -352,7 +403,7 @@ function upload(){
 //    options.params = params;
 
     var ft = new FileTransfer();
-    ft.upload(fileURL, encodeURI("http://192.168.43.24/demo/upload.php"), onSuccess, onError, options);
+    ft.upload(fileURL, encodeURI("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload.php"), onSuccess, onError, options);
 }
 
 function networkInfo() {

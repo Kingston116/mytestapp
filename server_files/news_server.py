@@ -1,11 +1,19 @@
 import json
 from os import listdir
 from os.path import isfile, join
+from cryptography.fernet import Fernet
 
 import flask
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+
+
+def validate_user(string_key):
+    key = Fernet.generate_key()
+    f = Fernet(key)
+    encrypt_value = f.encrypt(string_key)
+    f.decrypt(encrypt_value)
 
 
 @app.route('/', methods=['GET'])
