@@ -55,30 +55,15 @@
                 }
                 catch(s){
                     
-                }
-                //wait(1000)
-                //audioPlayer.currentTime=0;
-                //audioPlayer.pause();        
+                }     
                 console.log("playing "+nextSong);
                 audioPlayer.play();
-                /* audioPlayer.play().catch((error) => {
-                    
-                    current_audio_comment_index = current_audio_comment_index-1;
-                    nextSong = current_audio_list[current_audio_comment_index];
-                    audioPlayer.src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/"+key+"/"+nextSong;
-                    console.log("inside playing "+nextSong);
-                    audioPlayer.play();
-                }); */
                 current_audio_comment_index++;
-                //wait(1000)
                 }, false);
             $("#recordedComment").hide();
             $("#tabs").tabs();
 	        $("#recordSound").on("tap", function(e) {
 	            e.preventDefault();
-	            /* if(checkMenuOpen()==false){
-                    return;
-                  } */
 	            var recordingCallback = {};
 
 	            recordingCallback.recordSuccess = handleRecordSuccess;
@@ -150,9 +135,6 @@
     }
 
     function startRecordingSound(recordingCallback) {
-        /* if(checkMenuOpen() == false){
-        return;
-      } */
         var recordVoice = function(dirPath) {
             var basePath = "";
 
@@ -258,10 +240,6 @@
     }
 
     function load_menu(){
-        //document.getElementById("mainNav").addEventListener('click',openNav,false);
-        //document.getElementById("newsNav").addEventListener('click',openNav,false);
-        //document.getElementById("closeNav").addEventListener('click',closeNav,false);
-
         document.addEventListener("backbutton", onBackKeyDown, false);
         document.getElementById("upload").addEventListener('click',upload,false);
     }
@@ -273,9 +251,6 @@
     }
     function load_news(element){
       current_audio_comment_index=0;
-      /* if(checkMenuOpen() == false){
-        return;
-      } */
       key = element.target.parentElement.children[0].children[0].innerText;
       window.location.href = "#news";
       $("#recordedComment").hide();
@@ -326,48 +301,6 @@
         } 
       } 
 
-/* function checkMenuOpen(){
-if(document.getElementById("mySidenav").style.width == "250px"){
-    closeNav();
-    return false;
-  }
-} */
-
-    /*add a black background color to body */
-/* function openNav() {
-  if(checkMenuOpen() == false){
-        return;
-      }
-  document.getElementById("mySidenav").style.width = "250px";
-  //document.getElementById("main").style.marginLeft = "250px";
-  disableMain();
-} */
-
-/* function disableMain(){
-   if(currentPage=="HOME"){
-   document.getElementById("main").style.backgroundColor = "rgba(0,0,0,0.4)";
-   document.getElementById("main").disabled = true;
-   }
-    if(currentPage=="NEWS"){
-    document.getElementById("news").style.backgroundColor = "rgba(0,0,0,0.4)";
-    document.getElementById("news").disabled = true;
-    }
-} */
-
-/* function enableMain(){
-   if(currentPage=="HOME"){document.getElementById("main").style.backgroundColor = "white";
-   document.getElementById("main").disabled = false;}
-    if(currentPage=="NEWS"){document.getElementById("news").style.backgroundColor = "white";
-    document.getElementById("news").disabled = false;}
-} */
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-/* function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  //document.getElementById("main").style.marginLeft = "0";
-  enableMain();
-} */
-
 
 function upload(){
 
@@ -384,10 +317,6 @@ function upload(){
    }
 
     fileURL = document.getElementById("recordedAudio").src;
-//    var options = new FileUploadOptions();
-//    options.fileKey = "file";
-//    options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
-    //options.mimeType = "audio/wav";
 
     var options ={
         fileName: key + "_" + userid + "_" + fileURL.substr(fileURL.lastIndexOf('/') + 1),
@@ -396,12 +325,6 @@ function upload(){
         headers:{Connection: 'close'}
     };
 
-//    var params = {};
-//    params.value1 = "test";
-//    params.value2 = "param";
-//
-//    options.params = params;
-
     var ft = new FileTransfer();
     ft.upload(fileURL, encodeURI("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload.php"), onSuccess, onError, options);
 }
@@ -409,15 +332,6 @@ function upload(){
 function networkInfo() {
    var networkState = navigator.connection.type;
    var states = {};
-//   states[navigator.connection.UNKNOWN]  = 'Unknown connection';
-//   states[navigator.connection.ETHERNET] = 'Ethernet connection';
-//   states[navigator.connection.WIFI]     = 'WiFi connection';
-//   states[navigator.connection.CELL_2G]  = 'Cell 2G connection';
-//   states[navigator.connection.CELL_3G]  = 'Cell 3G connection';
-//   states[navigator.connection.CELL_4G]  = 'Cell 4G connection';
-//   states[navigator.connection.CELL]     = 'Cell generic connection';
-//   states[navigator.connection.NONE]     = 'No network connection';
-//   alert('Connection type: ' + states[networkState]);
    console.log('Connection type: ' + networkState);
 }
 
