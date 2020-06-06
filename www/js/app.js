@@ -60,10 +60,22 @@
                 audioPlayer.play();
                 current_audio_comment_index++;
                 }, false);
+            document.addEventListener('play', function(e){
+                var audios = document.getElementsByTagName('audio');
+                for(var i = 0, len = audios.length; i < len;i++){
+                    if(audios[i] != e.target){
+                        audios[i].pause();
+                    }
+                }
+            }, true);
             $("#recordedComment").hide();
             $("#tabs").tabs();
 	        $("#recordSound").on("tap", function(e) {
-	            e.preventDefault();
+                e.preventDefault();
+                var audios = document.getElementsByTagName('audio');
+                for(var i = 0, len = audios.length; i < len;i++){
+                    audios[i].pause();
+                }
 	            var recordingCallback = {};
 
 	            recordingCallback.recordSuccess = handleRecordSuccess;
@@ -90,7 +102,8 @@
 	        });
 
 	        $("#stopRecordingSound").on("tap", function(e) {
-	            $("#recordSoundDialog").popup("close");
+                $("#recordSoundDialog").popup("close");
+                window.location.href = "#news";
 	        });
 
 	        $("#playSound").on("tap", function(e) {
@@ -308,14 +321,38 @@ function upload(){
       console.log("Code = " + r.responseCode);
       console.log("Response = " + r.response);
       console.log("Sent = " + r.bytesSent);
+      fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
+        .then((data) => {
+            current_audio_list = data.comments;
+            var commentpanel = '<ul data-role="listview" data-inset="true" style="width:100%">';
+            for(i = 0; i < current_audio_list.length; i++){
+                commentpanel += '<li style="display:flex;"><div style="width:50%"> <a  href="#">Comment </a></div><audio id="player-'+i+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[i]+'" controls></audio></li>';
+            }
+            commentpanel+="</ul>"
+            document.getElementById("commentsList").innerHTML = commentpanel;
+        })
+        .catch((error) => {
+            console.warn(error);
+        });
+        $.mobile.loading("hide");
+        $("body").removeClass('ui-disabled');
+        alert("Successfully uploaded");
    }
 
    function onError(error) {
       alert("An error has occurred: Code = " + error.code);
       console.log("upload error source " + error.source);
       console.log("upload error target " + error.target);
+      $.mobile.loading("hide");
+        $("body").removeClass('ui-disabled');
+        alert("uploaded failed..Please try again");
    }
 
+    $("body").addClass('ui-disabled');
+    $.mobile.loading("show",{
+    text: "Uploading...",
+    textVisible: true
+    })
     fileURL = document.getElementById("recordedAudio").src;
 
     var options ={
@@ -327,6 +364,7 @@ function upload(){
 
     var ft = new FileTransfer();
     ft.upload(fileURL, encodeURI("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload.php"), onSuccess, onError, options);
+    
 }
 
 function networkInfo() {
