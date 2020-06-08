@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/app.css" />
-        <link rel="stylesheet" href="jqueryMobile/jquery.mobile-1.4.0.min.css">
-        <script src="jqueryMobile/jquery-1.10.2.min.js"></script>
-        <script src="jqueryMobile/jquery.mobile-1.4.0.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-        <title>News App</title>
-        <style>
-            /*{
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <link rel="stylesheet" href="jqueryMobile/jquery.mobile-1.4.0.min.css">
+    <script src="jqueryMobile/jquery-1.10.2.min.js"></script>
+    <script src="jqueryMobile/jquery.mobile-1.4.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <title>News App</title>
+    <style>
+        /*{
             margin:0;
             padding:0;
             } */
 
-            #menu {
+        #menu {
             list-style-type: none;
             width: 100%;
-            }
+        }
 
-            #menu li {
+        #menu li {
             position: relative;
             margin: 5px;
             padding: 0px;
@@ -34,23 +36,25 @@
             /* min-height fix for IE6.  Ideally this would be in an IE6 only stylesheet */
             height: auto !important;
             height: 44px;
-            }
+        }
 
-            .cimg {
+        .cimg {
             position: absolute;
             left: 0;
             top: 0;
             width: 100px;
             height: 100px;
-            }
+        }
 
-            .cinner {
-            padding: 0 0 0 110px; /* Makes room for the image so it doesn't overlap text */
+        .cinner {
+            padding: 0 0 0 110px;
+            /* Makes room for the image so it doesn't overlap text */
             font-size: 10px;
-            }
-        </style>
-    </head>
-    <body >
+        }
+    </style>
+</head>
+
+<body>
     <!-- <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
       <a href="#">About</a>
@@ -58,112 +62,101 @@
       <a href="#">Clients</a>
       <a href="#">Contact</a>
     </div> -->
-        <div data-role="page" id="main" style="overflow-y:auto;" data-theme="b">
-            <div data-role="header" data-position="fixed" style="position: fixed;">
-                <!-- Use any element to open the sidenav -->
-                <ul style="padding-left: 0px;">
-                    <li>
-                        <span id="mainNav"><h2>&#9776;NEWS APP</h2></span>
-
-                    </li>
-                </ul>
-            </div>
-            <div id="content"></div>
-            <div data-role="footer" data-position="fixed" style="position: fixed;">
-                <div data-role="navbar">
-                <ul>
-                    <li style="width: 33%;"><a href="#main" data-icon="grid" class="ui-btn-active">News</a></li>
-                    <li style="width: 33%;"><a href="#" data-icon="star">About Us</a></li>
-                    <li style="width: 33%;"><a href="#" data-icon="gear">Setting</a></li>
-                  </ul>
-                </div>
-                <h1>Powered by Appmetric</h1>
-             </div>
+    <div data-role="page" id="main" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <!-- Use any element to open the sidenav -->
+            <a href="#left-panel-main" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
-        <div data-role="page" id="news" style="overflow-y:auto;" data-theme="b">
-            <div data-role="header" data-position="fixed" style="position: fixed;">
-                <ul style="padding-left: 0px;">
-                    <li>
-                        <span id="newsNav"><h2>&#9776;NEWS APP</h2></span>
+        <div data-role="panel" id="left-panel-main" data-theme="b">
+            
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider">About Us</li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div id="content" data-role="content" style="overflow-y:auto;"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
+            <p style="margin: 1px;">↻</p></div></div>
+        
 
-                    </li>
-                </ul>
-            </div>
-            <div data-role="content" style="overflow-y:auto;">
-               <div data-role="fieldcontain">
+    </div>
+    <div data-role="page" id="news" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <a href="#left-panel-news" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                    <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
+        </div>
+        <div data-role="panel" id="left-panel-news" data-theme="b">
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider">About Us</li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div data-role="content" style="overflow-y:auto;">
+            <div data-role="fieldcontain">
+                <div id="refreshnews" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
+                    <p style="margin: 1px;">↻</p></div>
+                <input type="hidden" id="location" />
+                <h2 id="title"></h2>
+                <div class="center-wrapper" id="backgroundTile" style="text-align:center;">
+                    <div id="detailedTitle" style="height:270px"></div>
+                    <audio style="width:100%" id="audio" src="" controls controlsList="nodownload">
 
-                   <input type="hidden" id="location"/>
-                   <div class="center-wrapper" id="backgroundTile">
-                       <div id="detailedTitle" style="height:270px"></div>
-                       <audio style="width:100%" id="audio" src="" controls>
+                    </audio>
+                    <p id="buffer">Buffering : <progress max="100"></progress></p>
 
+                    <input type="button" id="recordSound" data-icon="audio" value="Record your view" class="center-button"
+                        data-inline="true" />
+                    <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
+                    <div display: table; style="width: 100%;" id="recordedComment">
+                        <audio style="width:70%;float: left;" id="recordedAudio" src="" controls
+                            controlsList="nodownload">
                         </audio>
-                        <p id="buffer">Buffering : <progress  max="100"></progress></p>
-                        
-                       <input type="button" id="recordSound" data-icon="audio" value="Comment" class="center-button" data-inline="true"/>
-<!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
-                        <div display: table; style="width: 100%;" id="recordedComment">
-                            <audio style="width:70%;float: left;" id="recordedAudio" src="" controls>
-                            </audio>
-                            <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="ok"  id="upload" data-icon="check">
-                            
-                                <!-- <i class="material-icons">&#xe163;</i> -->
-                            
-                        </div>
-                        <div data-role="tabs" style="width: 100%;">
-                            <div data-role="navbar">
-                            <ul>
-                                <li><a href="#Text">Text</a></li>
-                                <li><a href="#Comment">Comments</a></li>
-                           </ul>   
-                           <div id="Text" >
-                            <h3>Description</h3>
-                            <div id="detailed"></div>
-                        </div>
-                        
-                        <div id="Comment" >
-                            <h3>Comments</h3>
-                            <p>List of recorded comments</p>
-                            <div id="commentsList"></div>
-                        </div>
-                        </div>
-                        <!-- Tab content -->
-                        
+                        <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="ok"
+                            id="upload" data-icon="check">
+
+                        <!-- <i class="material-icons">&#xe163;</i> -->
+
                     </div>
+                    <p style="height: 30px;color: #082aa2;font-weight: 900;text-align: center;padding-top: 20px;border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;text-transform: none;">All Views</p>
+                    <div id="commentsList" style="margin: 0px;"></div>
 
+                    <!-- Tab content -->
 
-                   </div>
-
-                   <div data-role="popup" id="recordSoundDialog" data-dismissible="false" style="width:250px">
-                       <div data-role="header">
-                           <h1>Recording</h1>
-                       </div>
-
-                       <div data-role="content">
-                           <div class="center-wrapper">
-                               <div id="soundDuration"></div>
-                               <input type="button" id="stopRecordingSound" value="Stop Recording"
-                                      class="center-button" data-inline="true"/>
-                           </div>
-                       </div>
-                    </div>
-                 </div>
-             </div>
-
-             <div data-role="footer" data-position="fixed" style="position: fixed;">
-                <div data-role="navbar" >
-                <ul>
-                    <li style="width: 33%;" ><a href="#main" data-icon="grid" class="ui-btn-active">News</a></li>
-                    <li style="width: 33%;"><a href="#" data-icon="star">About Us</a></li>
-                    <li style="width: 33%;"><a href="#" data-icon="gear">Setting</a></li>
-                  </ul>
                 </div>
-                <h1>Powered by Appmetric</h1>
-             </div>
+                
+
+            </div>
+
+            <div data-role="popup" id="recordSoundDialog" data-dismissible="false" style="width:250px">
+                <div data-role="header">
+                    <h1>Recording</h1>
+                </div>
+
+                <div data-role="content">
+                    <div class="center-wrapper">
+                        <div id="soundDuration"></div>
+                        <input type="button" id="stopRecordingSound" value="Stop Recording" class="center-button"
+                            data-inline="true" />
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Application JS files -->
-        <script type="text/javascript" src="js/app.js"></script>
-          <script type="text/javascript" src="cordova.js"></script>
-        <script src="js/audio.js" async></script>
-    </body>
+    </div>
+
+
+    </div>
+    <!-- Application JS files -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/audio.js" async></script>
+</body>
+
 </html>

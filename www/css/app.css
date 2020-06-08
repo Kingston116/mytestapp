@@ -3,7 +3,7 @@ a {
 }
 
 .center-wrapper {
-	text-align: center;
+	text-align: justify;
     background-repeat: NO-REPEAT;
     background-size: 100% 300px;
 }
@@ -59,7 +59,6 @@ a {
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s;
-  padding: 20px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -102,4 +101,21 @@ a {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+audio::-webkit-media-controls-mute-button {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+.circle-div {
+  background-color: #b32929;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 21px;
+  right: 25px;
 }
