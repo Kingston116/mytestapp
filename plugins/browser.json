@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-audioinput": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.appmetricsoft.news"
+    }
+  },
+  "dependent_plugins": {}
+}

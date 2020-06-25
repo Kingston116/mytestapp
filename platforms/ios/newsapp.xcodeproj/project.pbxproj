@@ -497,6 +497,7 @@
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmetricsoft.news;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Debug;
 		};
@@ -538,6 +539,7 @@
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmetricsoft.news;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Release;
 		};

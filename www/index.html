@@ -76,11 +76,12 @@
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                 <li data-role="list-divider">About Us</li>
+                <li data-role="list-divider">Terms & Conditions</li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
-        <div id="content" data-role="content" style="overflow-y:auto;"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
-            <p style="margin: 1px;">↻</p></div></div>
+        <div id="content" data-role="content" style="overflow-y:auto;"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);">
+            </div></div>
         
 
     </div>
@@ -101,8 +102,8 @@
         </div>
         <div data-role="content" style="overflow-y:auto;">
             <div data-role="fieldcontain">
-                <div id="refreshnews" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
-                    <p style="margin: 1px;">↻</p></div>
+                <div id="refreshnews" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;">
+                    </div>
                 <input type="hidden" id="location" />
                 <h2 id="title"></h2>
                 <div class="center-wrapper" id="backgroundTile" style="text-align:center;">
@@ -111,22 +112,35 @@
 
                     </audio>
                     <p id="buffer">Buffering : <progress max="100"></progress></p>
-
+                    <table style="width: 100%;">
+                        <tr><td style="width: 13%;">
+                        <button id="prev" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/prev.png);background-position: 40% center;background-size: 65%;background-repeat: no-repeat;"></button> </td>
+                        <td style="width: 84%;">
                     <input type="button" id="recordSound" data-icon="audio" value="Record your view" class="center-button"
-                        data-inline="true" />
+                        data-inline="true" style="text-transform: none;margin-left:5%;" /></td>
+                        <td style="width: 13%;">
+                        <button id="next" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/next.png);background-position: 65% center;background-size: 65%;background-repeat: no-repeat;"></button>
+                    </td>
+                    </tr>
+                </table>
                     <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
                     <div display: table; style="width: 100%;" id="recordedComment">
                         <audio style="width:70%;float: left;" id="recordedAudio" src="" controls
                             controlsList="nodownload">
                         </audio>
-                        <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="ok"
+                        <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="OK"
                             id="upload" data-icon="check">
 
                         <!-- <i class="material-icons">&#xe163;</i> -->
 
                     </div>
-                    <p style="height: 30px;color: #082aa2;font-weight: 900;text-align: center;padding-top: 20px;border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;text-transform: none;">All Views</p>
-                    <div id="commentsList" style="margin: 0px;"></div>
+                    <div style="width: 100%;float: left;color: #082aa2;font-weight: 900;text-align:center;/* padding-top: 20px; */border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;vertical-align: middle;text-transform: none;">
+                        
+                        
+                        <p style="height: 30px; margin-top: 10px;">All Views </p>
+                        
+                    </div>
+                    <div id="commentsList" style="margin-top: 50px;"></div>
 
                     <!-- Tab content -->
 

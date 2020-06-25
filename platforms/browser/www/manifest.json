@@ -1,0 +1,17 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "theviewpod",
+  "short_name": "theviewpod",
+  "version": "com.appmetricsoft.news",
+  "description": "A News App.",
+  "author": "Appmetric Team",
+  "icons": [
+    {
+      "src": "www/img/icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
+  "start_url": "index.html"
+}

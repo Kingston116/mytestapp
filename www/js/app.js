@@ -9,10 +9,15 @@
     var key;
     var current_audio_list;
     var current_audio_comment_index=0;
+    var news_list=[];
+    var news_index=0;
 
     $(document).on("pageinit", "#main", function(e) {
         currentPage = "HOME";
-        load_home(e);
+        load_home(e); 
+        document.getElementById("prev").addEventListener("click", load_news_prev);
+        document.getElementById("next").addEventListener("click", load_news_next);
+        
         load_menu();
         networkInfo();
         e.preventDefault();
@@ -24,8 +29,8 @@
         	console.log(FileTransfer);
         	console.log(device.cordova);
             userid = device.uuid;
-        	console.log(navigator.connection.type);
-            document.addEventListener("offline", function(e){
+            console.log(navigator.connection.type);
+           document.addEventListener("offline", function(e){
                                 alert("NO_NETWORK");
                                 }, false);
              document.addEventListener("online", function(e){
@@ -54,7 +59,7 @@
                     var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
                     
                     for(var audiocomment in current_audio_list){
-                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
                     }
                     commentpanel+="</ul>"
                     document.getElementById("commentsList").innerHTML = commentpanel;
@@ -65,14 +70,7 @@
                 $.mobile.loading("hide");
             });
 
-            document.getElementById("refreshhome").addEventListener('click', function (e) {
-                    $.mobile.loading("show",{
-                        text: "Refreshing...",
-                        textVisible: true
-                        })
-                    load_home();
-                    $.mobile.loading("hide");
-            });                
+                        
             
             document.getElementById('audio').addEventListener('ended', function(){
                 audioPlayer = document.getElementById('audio');
@@ -269,16 +267,28 @@
     /* if(checkMenuOpen() == false){
         return;
       } */
-    var panel = '<div data-role="fieldcontain"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;"><p style="margin: 1px;">↻</p></div><input type="hidden" id="location" /><div class="center-wrapper"><ul id="menu" data-role="listview" data-theme="d" data-divider-theme="d" data-inset="true" style="padding-left: 0px;">';
+    var news_list_temp = []
+    var panel = '<div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;"></div><input type="hidden" id="location" /><ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style="padding-left: 0px;text-align: center;text-transform:uppercase;">';
     fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/news").then((response) => response.json())
     .then((data) => {
         for (i = 0; i < Object.keys(data.news).length; i++) {
-            panel += '<li data-transition="pop" class="li" style="min-height: 100px;" id="'+Object.keys(data.news)[i]+'"><img class="cimg" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
-            panel += '<div class="cinner"><p><b>'+Object.keys(data.news)[i]+'</b></p><p>'+data.news[Object.keys(data.news)[i]].description+'</p><div style="clear:both"></div></li><hr>';
+            news_list_temp.push(Object.keys(data.news)[i].toUpperCase());
+            panel += '<li class="news" data-transition="pop" id="'+Object.keys(data.news)[i]+'"><a href="#" style="color: #082aa2;font-size:large;margin-top:4%;margin-bottom:0%"><p><b>'+Object.keys(data.news)[i]+'</b></p><img style="width: 90%;height:200px;object-fit:cover;padding-top: 10px;padding-right: 10px;padding-left: 10px;" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
+            panel += '</a></li><hr>';
         }
-        panel += "</ul></div></div>"
+        news_list = news_list_temp;
+        panel += "</ul>"
         document.getElementById("content").innerHTML = panel
-        var li = document.getElementsByClassName("li");
+        document.getElementById("refreshhome").addEventListener('click', function (e) {
+            $.mobile.loading("show",{
+                text: "Refreshing...",
+                textVisible: true
+                })
+            console.log("refresh home");
+            load_home();
+            $.mobile.loading("hide");
+        });
+        var li = document.getElementsByClassName("news");
 
         for(var i = 0;i<li.length;i++){
             li[i].addEventListener("click", load_news);
@@ -311,8 +321,21 @@
     }
     function load_news(element){
       current_audio_comment_index=0;
-      
       key = element.target.parentElement.children[0].children[0].innerText;
+      news_index = news_list.indexOf(key);
+      
+      if(news_index+1 == news_list.length){
+        document.getElementById("next").disabled= true;
+        }
+        else{
+            document.getElementById("next").disabled= false;
+        }
+        if(news_index == 0){
+            document.getElementById("prev").disabled= true;
+        }
+        else{
+            document.getElementById("prev").disabled= false;
+        }
       window.location.href = "#news";
       $("#recordedComment").hide();
       fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
@@ -326,7 +349,7 @@
             var commentpanel = '<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true" style="width:100%;padding:0;">';
             
             for(var audiocomment in current_audio_list){
-                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
             }
             commentpanel+="</ul>"
             document.getElementById("commentsList").innerHTML = commentpanel;
@@ -349,6 +372,115 @@
             isPlaying = false;
         };
     }
+
+    function load_news_next(){
+        current_audio_comment_index=0;
+        
+        
+        key = news_list[news_index+1];
+        news_index = news_index+1;
+        if(news_index+1 == news_list.length){
+            document.getElementById("next").disabled= true;
+        }
+        else{
+            document.getElementById("next").disabled= false;
+        }
+        if(news_index == 0){
+            document.getElementById("prev").disabled= true;
+        }
+        else{
+            document.getElementById("prev").disabled= false;
+        }
+        window.location.href = "#news";
+        $("#recordedComment").hide();
+        fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
+          .then((data) => {
+              document.getElementById("title").innerText=key;
+              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;";
+              document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
+              document.getElementById("audio").load();
+              document.getElementById("audio").play();
+              current_audio_list = data.comments;
+              var commentpanel = '<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true" style="width:100%;padding:0;">';
+              
+              for(var audiocomment in current_audio_list){
+                  commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+              }
+              commentpanel+="</ul>"
+              document.getElementById("commentsList").innerHTML = commentpanel;
+          })
+          .catch((error) => {
+              console.warn(error);
+          });
+          currentPage = "NEWS";
+          
+          // Initializing values
+          var isPlaying = true;
+          audioPlayer = document.getElementById('audio');
+          // On video playing toggle values
+          audioPlayer.onplaying = function() {
+              isPlaying = true;
+          };
+  
+          // On video pause toggle values
+          audioPlayer.onpause = function() {
+              isPlaying = false;
+          };
+      }
+
+      function load_news_prev(){
+        current_audio_comment_index=0;
+        
+        key = news_list[news_index-1];
+        news_index = news_index-1
+        if(news_index+1 == news_list.length){
+            document.getElementById("next").disabled= true;
+        }
+        else{
+            document.getElementById("next").disabled= false;
+        }
+        if(news_index == 0){
+            document.getElementById("prev").disabled= true;
+        }
+        else{
+            document.getElementById("prev").disabled= false;
+        }
+        window.location.href = "#news";
+        $("#recordedComment").hide();
+        fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
+          .then((data) => {
+              document.getElementById("title").innerText=key;
+              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;";
+              document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
+              document.getElementById("audio").load();
+              document.getElementById("audio").play();
+              current_audio_list = data.comments;
+              var commentpanel = '<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true" style="width:100%;padding:0;">';
+              
+              for(var audiocomment in current_audio_list){
+                  commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+              }
+              commentpanel+="</ul>"
+              document.getElementById("commentsList").innerHTML = commentpanel;
+          })
+          .catch((error) => {
+              console.warn(error);
+          });
+          currentPage = "NEWS";
+          
+          // Initializing values
+          var isPlaying = true;
+          audioPlayer = document.getElementById('audio');
+          // On video playing toggle values
+          audioPlayer.onplaying = function() {
+              isPlaying = true;
+          };
+  
+          // On video pause toggle values
+          audioPlayer.onpause = function() {
+              isPlaying = false;
+          };
+      }
 
     function wait(milliseconds) { 
         let timeStart = new Date().getTime(); 
@@ -373,7 +505,7 @@ function upload(){
             var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
             
             for(var audiocomment in current_audio_list){
-                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;" href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;" href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
             }
             commentpanel+="</ul>"
             document.getElementById("commentsList").innerHTML = commentpanel;
