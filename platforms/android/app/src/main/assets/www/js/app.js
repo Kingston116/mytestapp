@@ -47,7 +47,31 @@
             });
             document.addEventListener("pause", onPause, false);
 
+            fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
+                .then((data) => {
+                    document.getElementById("term").innerHTML = data["terms"];
+                })
+                .catch((error) => {
+                    console.warn(error);
+                });
             
+            fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
+            .then((data) => {
+                document.getElementById("about").innerHTML = data["about"];
+            })
+            .catch((error) => {
+                console.warn(error);
+            });
+                
+            document.getElementById("news_nav").addEventListener('click', function (e) {
+                var audios = document.getElementsByTagName('audio');
+                for(var i = 0, len = audios.length; i < len;i++){
+                    if(audios[i] != e.target){
+                        audios[i].pause();
+                    }
+                }
+            }, true);
+
             document.getElementById("refreshnews").addEventListener('click', function (e) {
                 $.mobile.loading("show",{
                     text: "Refreshing...",

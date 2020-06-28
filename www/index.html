@@ -75,8 +75,9 @@
             
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">About Us</li>
-                <li data-role="list-divider">Terms & Conditions</li>
+                <li data-role="list-divider"><a href="#main">Home</a></li>                
+                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
@@ -88,7 +89,7 @@
     <div data-role="page" id="news" style="overflow-y:auto;" data-theme="a">
         
         <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
-            <a href="#left-panel-news" data-icon="bars" data-iconpos="notext" data-shadow="false"
+            <a href="#left-panel-news" id="news_nav" data-icon="bars" data-iconpos="notext" data-shadow="false"
                 data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
                 <div style="text-align-last: center;height: 100%;margin-top: 15px;">
                     <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
@@ -96,7 +97,9 @@
         <div data-role="panel" id="left-panel-news" data-theme="b">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">About Us</li>
+                <li data-role="list-divider"><a href="#main">Home</a></li>                
+                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
@@ -165,8 +168,57 @@
         </div>
     </div>
 
-
+    <div data-role="page" id="aboutus" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <a href="#left-panel-aboutus" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                    <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
+        </div>
+        <div data-role="panel" id="left-panel-aboutus" data-theme="b">
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider"><a href="#main">Home</a></li>                
+                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div data-role="content" style="overflow-y:auto;">
+            <div data-role="fieldcontain">
+                <div id="about"></div>
+            </div>
+        </div>
     </div>
+
+    <div data-role="page" id="terms" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <a href="#left-panel-terms" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                    <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
+        </div>
+        <div data-role="panel" id="left-panel-terms" data-theme="b">
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider"><a href="#main">Home</a></li>                
+                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div data-role="content" style="overflow-y:auto;">
+            <div data-role="fieldcontain">
+                <div id="term">
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    
     <!-- Application JS files -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
