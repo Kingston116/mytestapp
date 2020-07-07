@@ -46,7 +46,7 @@
                 //mainaudio.play();                
             });
             document.addEventListener("pause", onPause, false);
-
+            
             fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
                 .then((data) => {
                     document.getElementById("term").innerHTML = data["terms"];
@@ -54,7 +54,7 @@
                 .catch((error) => {
                     console.warn(error);
                 });
-            
+
             fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
             .then((data) => {
                 document.getElementById("about").innerHTML = data["about"];
@@ -214,6 +214,10 @@
             if (dirPath) {
                 basePath = dirPath + "/";
             }
+            if (device.platform == "iOS"){
+                basePath = cordova.file.tempDirectory.replace(/^file:\/\//, '');
+                console.log("basepath = " + basePath);
+            }
 
             var mediaFilePath = basePath + (new Date()).getTime() + ".wav";
 
@@ -293,6 +297,7 @@
       } */
     var news_list_temp = []
     var panel = '<div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;"></div><input type="hidden" id="location" /><ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style="padding-left: 0px;text-align: center;text-transform:uppercase;">';
+
     fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/news").then((response) => response.json())
     .then((data) => {
         for (i = 0; i < Object.keys(data.news).length; i++) {
@@ -365,7 +370,7 @@
       fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
         .then((data) => {
             document.getElementById("title").innerText=key;
-            document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;";
+            document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;background-size:100% 220px;";
             document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
             document.getElementById("audio").load();
             document.getElementById("audio").play();
@@ -420,7 +425,7 @@
         fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
           .then((data) => {
               document.getElementById("title").innerText=key;
-              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;";
+              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;background-size:100% 220px;";
               document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
               document.getElementById("audio").load();
               document.getElementById("audio").play();
@@ -474,7 +479,7 @@
         fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
           .then((data) => {
               document.getElementById("title").innerText=key;
-              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;";
+              document.getElementById("backgroundTile").style = "background-image: url('"+data.image_path+"');text-align:center;background-size:100% 220px;";
               document.getElementById("audio").src = "http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/news/"+key+"/"+key+".wav";
               document.getElementById("audio").load();
               document.getElementById("audio").play();
@@ -572,7 +577,8 @@ function upload(){
 }
 
 function networkInfo() {
-   var networkState = navigator.connection.type;
+   //var networkState = navigator.connection['type'];
+   var networkState = "unknown";
    var states = {};
    console.log('Connection type: ' + networkState);
 }

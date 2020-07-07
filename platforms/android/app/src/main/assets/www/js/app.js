@@ -46,15 +46,25 @@
                 //mainaudio.play();                
             });
             document.addEventListener("pause", onPause, false);
-
-            fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
+            var reqHeaders = new Headers({
+                "Access-Control-Allow-Origin": "*"
+            });
+            var request = new Request("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms", {
+                method: 'GET', 
+                headers: reqHeaders
+            });
+            fetch(request).then((response) => response.json())
                 .then((data) => {
                     document.getElementById("term").innerHTML = data["terms"];
                 })
                 .catch((error) => {
                     console.warn(error);
                 });
-            
+
+            request = new Request("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms", {
+                method: 'GET', 
+                headers: reqHeaders
+            });
             fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
             .then((data) => {
                 document.getElementById("about").innerHTML = data["about"];
