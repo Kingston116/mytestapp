@@ -15,15 +15,12 @@
 
     $(document).on("pageinit", "#main", function(e) {
         currentPage = "HOME";
+            window.location.href="#main";
         load_home(e); 
         document.getElementById("prev").addEventListener("click", load_news_prev);
         document.getElementById("next").addEventListener("click", load_news_next);
-        
-        load_menu();
         networkInfo();
         e.preventDefault();
-
-
 
         function onDeviceReady() {
         	console.log("[Notice] Device is now ready. Now registering app events ...");
@@ -31,22 +28,26 @@
         	console.log(device.cordova);
             userid = device.uuid;
             console.log(navigator.connection.type);
-           document.addEventListener("offline", function(e){
+            document.addEventListener("offline", function(e){
                                 alert("NO_NETWORK");
                                 }, false);
-             document.addEventListener("online", function(e){
-            console.log("YOU ARE ONLINE");
+            document.addEventListener("online", function(e){
+                console.log("YOU ARE ONLINE");
             }, false);
             mainaudio = document.getElementById('audio');
             mainaudio.addEventListener('loadstart', function (e) {
                 document.getElementById("buffer").style.visibility = "visible";
                 document.getElementsByClassName("ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-audio ui-btn-icon-left")[0].style = "background-color: #082aa2;color: white;";
             });
+            
+            currentPage = "HOME";
+            load_menu();
             mainaudio.addEventListener('canplay', function (e) {
                 document.getElementById("buffer").style.visibility = "hidden";
                 //mainaudio.play();                
             });
             document.addEventListener("pause", onPause, false);
+            //document.addEventListener("backbutton", onBackKeyDown, false);
             
             fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/terms").then((response) => response.json())
                 .then((data) => {
@@ -137,7 +138,7 @@
                 audioPlayer.load();
                 }
                 catch(s){
-                    
+                    console.log(s);
                 }     
                 console.log("playing "+nextSong);
                 audioPlayer.play();
@@ -156,8 +157,8 @@
                 }                
             }, true);
             $("#recordedComment").hide();
-            $("#tabs").tabs();            
-            $("#ui-id-1").trigger("click");
+            $("#tabs").tabs();        
+            $("#ui-id-1").trigger("click");   
 	        $("#recordSound").on("tap", function(e) {
                 e.preventDefault();
                 onPause();
@@ -216,6 +217,8 @@
         var currentFilePath = newFilePath;
         $("#recordedComment").show();
         document.getElementsByClassName("ui-btn ui-input-btn ui-corner-all ui-shadow ui-icon-check ui-btn-icon-left")[0].style = "background-color: #007b00;color: white;";
+        document.getElementsByClassName("ui-btn ui-input-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-left")[0].style = "background-color: rgb(255, 45, 45);color: white;";
+        
         document.getElementById("recordedAudio").src = newFilePath;
         $("#location").val(currentFilePath);
         $("#playSound").closest('.ui-btn').show();
@@ -322,63 +325,76 @@
     }
 
     function load_home (e) {
-    (e || window.event).preventDefault();
-    /* if(checkMenuOpen() == false){
-        return;
-      } */
-    var news_list_temp = []
-    var panel = '<div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;"></div><input type="hidden" id="location" /><ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style="padding-left: 0px;text-align: center;text-transform:uppercase;">';
+        (e || window.event).preventDefault();
+        /* if(checkMenuOpen() == false){
+            return;
+        } */
+        load_menu();
+        currentPage = "HOME";
+        var news_list_temp = []
+        var panel = '<div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;"></div><input type="hidden" id="location" /><ul class="ui-listview ui-listview-inset ui-corner-all ui-shadow" data-role="listview" data-inset="true" style="padding-left: 0px;text-align: center;text-transform:uppercase;">';
 
-    fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/news").then((response) => response.json())
-    .then((data) => {
-        for (i = 0; i < Object.keys(data.news).length; i++) {
-            news_list_temp.push(Object.keys(data.news)[i].toUpperCase());
-            panel += '<li class="news" data-transition="pop" id="'+Object.keys(data.news)[i]+'"><a href="#" style="color: #082aa2;font-size:large;margin-top:4%;margin-bottom:0%"><p><b>'+Object.keys(data.news)[i]+'</b></p><img style="width: 90%;height:200px;object-fit:cover;padding-top: 10px;padding-right: 10px;padding-left: 10px;" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
-            panel += '</a></li><hr>';
-        }
-        news_list = news_list_temp;
-        panel += "</ul>"
-        document.getElementById("content").innerHTML = panel
-        document.getElementById("refreshhome").addEventListener('click', function (e) {
-            $.mobile.loading("show",{
-                text: "Refreshing...",
-                textVisible: true
-                })
-            window.location.href="index.html";
-            console.log("refresh home");
-            load_home();
-            $.mobile.loading("hide");
+        fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/news").then((response) => response.json())
+        .then((data) => {
+            for (i = 0; i < Object.keys(data.news).length; i++) {
+                news_list_temp.push(Object.keys(data.news)[i].toUpperCase());
+                panel += '<li class="news" data-transition="pop" id="'+Object.keys(data.news)[i]+'"><a href="#" style="color: #082aa2;font-size:large;margin-top:4%;margin-bottom:0%"><p><b>'+Object.keys(data.news)[i]+'</b></p><img style="width: 90%;height:200px;object-fit:cover;padding-top: 10px;padding-right: 10px;padding-left: 10px;" src="'+data.news[Object.keys(data.news)[i]].image_path+'"/>';
+                panel += '</a></li><hr>';
+            }
+            news_list = news_list_temp;
+            panel += "</ul>"
+            document.getElementById("content").innerHTML = panel
+            document.getElementById("refreshhome").addEventListener('click', function (e) {
+                $.mobile.loading("show",{
+                    text: "Refreshing...",
+                    textVisible: true
+                    })
+                window.location.href="index.html";
+                console.log("refresh home");
+                load_home();
+                $.mobile.loading("hide");
+            });
+            var li = document.getElementsByClassName("news");
+
+            for(var i = 0;i<li.length;i++){
+                li[i].addEventListener("click", load_news);
+            }
+        })
+        .catch((error) => {
+            console.warn(error);
         });
-        var li = document.getElementsByClassName("news");
-
-        for(var i = 0;i<li.length;i++){
-            li[i].addEventListener("click", load_news);
-        }
-    })
-    .catch((error) => {
-        console.warn(error);
-    });
 
     }
 
-    function load_menu(){
+    function load_menu(){        
         document.addEventListener("backbutton", onBackKeyDown, false);
-        document.getElementById("upload").addEventListener('click',upload,false);
+        document.getElementById("upload").addEventListener('click',upload,true);
+        document.getElementById("cancel").addEventListener('click',hideRecordedComment, true);
+    }
+
+    function hideRecordedComment(){
+        $("#recordedComment").hide();
     }
 
     function onBackKeyDown(e) {
-       e.preventDefault();
-       onPause();
+        console.log('ok backey downed');
+        e.preventDefault();
+        onPause();
         if(currentPage == "HOME"){
             if (confirm('Do you want to exit the app?')==true){
                 navigator.app.exitApp();
             }
+            else{
+                return;
+            }
         }
-        window.location.href = "#main";
+        window.location.href = "index.html";
         currentPage = "HOME";
+        onPause();
     }
 
     function news_load(){
+        onPause();
         if(news_index+1 == news_list.length){
             document.getElementById("options").innerHTML = "";
             $.mobile.loading("show",{
@@ -396,9 +412,7 @@
             else{
                 document.getElementById("prev").disabled= false;
             }
-          if(window.location.href == "#news"){
-            window.location.href = "#index.html";
-          }
+        
           window.location.href = "#news";
           
           var poll_check = "";
@@ -664,8 +678,13 @@ function onPause() {
     for(var i = 0, len = audios.length; i < len;i++){
         audios[i].pause();
     }
-    document.getElementById('playAll').value = "▶ Play all";
-    $('#playAll').button("refresh");
+    try{
+        document.getElementById('playAll').value = "▶ Play all";
+        $('#playAll').button("refresh");
+    }
+    catch(e){
+        console.log(e);
+    }
 }
 })();
 

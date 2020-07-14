@@ -106,7 +106,7 @@
         </div>
         <div data-role="content" style="overflow-y:auto;">
             <div data-role="fieldcontain">
-                <div id="refreshnews" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;">
+                <div id="refreshnews" class="circle-div" style="z-index: 3;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;">
                     </div>
                 <input type="hidden" id="location" />
                 <h2 id="title"></h2>
@@ -128,21 +128,24 @@
                     </tr>
                 </table>
                     <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
-                    <div display: table; style="width: 100%;" id="recordedComment">
-                        <audio style="width:70%;float: left;" id="recordedAudio" src="" controls
+                    <div display: table; style="width: 100%;display: flex;" id="recordedComment">
+                        <audio style="width:50%;float: left;" id="recordedAudio" src="" controls
                             controlsList="nodownload">
                         </audio>
-                        <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="OK"
-                            id="upload" data-icon="check">
-
+                        <div style="height: 100%;font-size: 12px;width: 25%;">
+                        <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="OK"
+                            id="upload" data-icon="check"></div>
+                            <div style="height: 100%;font-size: 12px;width: 25%;">
+                        <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="NO"
+                        id="cancel" data-icon="delete"></div>
                         <!-- <i class="material-icons">&#xe163;</i> -->
 
                     </div>
                     <div data-role="tabs" style="width: 100%;z-index: 2;">
                         <div data-role="navbar">
                         <ul>
-                            <li id="tabComment" ><a href="#Comment" class="ui-btn-active">Comments</a></li>
-                            <li id="tabPoll"><a  href="#Poll">Poll</a></li>
+                            <li id="tabComment" ><a href="#Comment" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
+                            <li id="tabPoll"><a  href="#Poll" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
                        </ul>   
                        
 
@@ -192,7 +195,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div></div></div>
 
     <div data-role="page" id="aboutus" style="overflow-y:auto;" data-theme="a">
         
