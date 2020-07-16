@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
 
     <title>News App</title>
     <style>
@@ -68,78 +69,117 @@
             <!-- Use any element to open the sidenav -->
             <a href="#left-panel-main" data-icon="bars" data-iconpos="notext" data-shadow="false"
                 data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
-                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                 <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
         <div data-role="panel" id="left-panel-main" data-theme="b">
             
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">About Us</li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
-        <div id="content" data-role="content" style="overflow-y:auto;"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
-            <p style="margin: 1px;">↻</p></div></div>
+        <div id="content" data-role="content" style="overflow-y:auto;"><div id="refreshhome" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);">
+            </div></div>
         
 
     </div>
     <div data-role="page" id="news" style="overflow-y:auto;" data-theme="a">
         
         <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
-            <a href="#left-panel-news" data-icon="bars" data-iconpos="notext" data-shadow="false"
+            <a href="#left-panel-news" id="news_nav" data-icon="bars" data-iconpos="notext" data-shadow="false"
                 data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
-                <div style="text-align-last: center;height: 100%;margin-top: 15px;">
+                <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                     <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
         <div data-role="panel" id="left-panel-news" data-theme="b">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider">About Us</li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
         <div data-role="content" style="overflow-y:auto;">
             <div data-role="fieldcontain">
-                <div id="refreshnews" class="circle-div" style="z-index: 1;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;">
-                    <p style="margin: 1px;">↻</p></div>
+                <div id="refreshnews" class="circle-div" style="z-index: 3;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;">
+                    </div>
                 <input type="hidden" id="location" />
                 <h2 id="title"></h2>
-                <div class="center-wrapper" id="backgroundTile" style="text-align:center;">
-                    <div id="detailedTitle" style="height:270px"></div>
+                <div class="center-wrapper" id="backgroundTile" style="text-align:center;background-size: 100% 220px;">
+                    <div id="detailedTitle" style="height:220px;"></div>
                     <audio style="width:100%" id="audio" src="" controls controlsList="nodownload">
 
                     </audio>
                     <p id="buffer">Buffering : <progress max="100"></progress></p>
-
+                    <table style="width: 100%;">
+                        <tr><td style="width: 13%;">
+                        <button id="prev" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/prev.png);background-position: 40% center;background-size: 65%;background-repeat: no-repeat;"></button> </td>
+                        <td style="width: 84%;">
                     <input type="button" id="recordSound" data-icon="audio" value="Record your view" class="center-button"
-                        data-inline="true" />
+                        data-inline="true" style="text-transform: none;margin-left:5%;" /></td>
+                        <td style="width: 13%;">
+                        <button id="next" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/next.png);background-position: 65% center;background-size: 65%;background-repeat: no-repeat;"></button>
+                    </td>
+                    </tr>
+                </table>
                     <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
-                    <div display: table; style="width: 100%;" id="recordedComment">
-                        <audio style="width:70%;float: left;" id="recordedAudio" src="" controls
+                    <div display: table; style="width: 100%;display: flex;" id="recordedComment">
+                        <audio style="width:50%;float: left;margin-top: 4%;height: 30px;" id="recordedAudio" src="" controls
                             controlsList="nodownload">
                         </audio>
-                        <input type="button" style="height: 100%;font-size: 12px;" data-iconpos="left" value="ok"
-                            id="upload" data-icon="check">
-
+                        <div style="height: 100%;font-size: 12px;width: 25%;">
+                        <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="OK"
+                            id="upload" data-icon="check"></div>
+                            <div style="height: 100%;font-size: 12px;width: 25%;">
+                        <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="NO"
+                        id="cancel" data-icon="delete"></div>
                         <!-- <i class="material-icons">&#xe163;</i> -->
 
                     </div>
-                    <div style="width: 100%;float: left;height: 100px;">
-                    <button id="prev" style="width: 20%;"></button> 
-                    <button id="Next" style="width: 20%;"></button></div>
-                    <p style="height: 30px;color: #082aa2;font-weight: 900;text-align: 
-                    center;padding-top: 20px;border-bottom-color: red;border-bottom-width: 100%;
-                    border-color: #fb6060;border-bottom: solid;border-width: 5px;
-                    border-color: #b32929;text-transform: none;">All Views </p>
-                    <div id="commentsList" style="margin: 0px;"></div>
+                    <div data-role="tabs" style="width: 100%;z-index: 2;">
+                        <div data-role="navbar">
+                        <ul>
+                            <li id="tabComment" ><a id="acomment" onclick="$('#Poll').hide();$('#Comment').show();" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
+                            <li id="tabPoll"><a id="apoll" onclick="$('#Poll').show();$('#Comment').hide();" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
+                       </ul>   
+                       
 
-                    <!-- Tab content -->
+                        <div id="Comment">
+                            <div style="width: 100%;float: left;color: #082aa2;font-weight: 900;text-align:center;/* padding-top: 20px; */border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;vertical-align: middle;text-transform: none;">
+                            
+                                <table>
+                                    <tr style="height: 30px">
+                                        <td style="width: 80%;vertical-align: bottom;">
+                                            <p style="height: 30px;">All Views </p>
+                                        </td>
+                                        <td style="width: 20%;height: 30px">
+                                            <input type="button" value="▶ Play all" id="playAll" data-mini="true">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="commentsList" style="z-index: -1;"></div>
+                        </div>
 
+                        <div id="Poll" >
+                            <div style="width: 100%;float: left;color: #082aa2;font-weight: 900;text-align:center;/* padding-top: 20px; */border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;vertical-align: middle;text-transform: none;">
+                                
+                                
+                                <p style="height: 30px; margin-top: 30px;">Poll </p>
+                                
+                            </div>
+                            <div id="detailedPoll" data-mini="true">
+                                <h3 id="Question">Question ?:</h3>
+                                <div id="options"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-
-            </div>
 
             <div data-role="popup" id="recordSoundDialog" data-dismissible="false" style="width:250px">
                 <div data-role="header">
@@ -155,14 +195,67 @@
                 </div>
             </div>
         </div>
+    </div></div></div>
+
+    <div data-role="page" id="aboutus" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <a href="#left-panel-aboutus" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
+                    <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
+        </div>
+        <div data-role="panel" id="left-panel-aboutus" data-theme="b">
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div data-role="content" style="overflow-y:auto;">
+            <div data-role="fieldcontain">
+                <div id="about"></div>
+            </div>
+        </div>
     </div>
 
+    <div data-role="page" id="terms" style="overflow-y:auto;" data-theme="a">
+        
+        <div data-role="header" data-position="fixed" style="position: fixed;height: 60px;background-color: #eaeaea;">
+            <a href="#left-panel-terms" data-icon="bars" data-iconpos="notext" data-shadow="false"
+                data-iconshadow="false" style="width: 50px;height: 50px;">Menu</a>
+                <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
+                    <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
+        </div>
+        <div data-role="panel" id="left-panel-terms" data-theme="b">
+            <ul data-role="listview" data-theme="d">
+                <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
+                <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
+                <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
+            </ul>
+        </div>
+        <div data-role="content" style="overflow-y:auto;">
+            <div data-role="fieldcontain">
+                <div id="term">
 
+                </div>
+            </div>
+        </div>
     </div>
+        
+    
     <!-- Application JS files -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script src="js/audio.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 </body>
 
 </html>

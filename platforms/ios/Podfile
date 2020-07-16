@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'C:\Users\Appmetric_Laptop_001\Desktop\Appmetric\news\platforms\ios\newsapp' do
-	project 'C:\Users\Appmetric_Laptop_001\Desktop\Appmetric\news\platforms\ios\newsapp.xcodeproj'
+target 'C:\Users\Appmetric_Laptop_001\Desktop\Appmetric\mytestapp\platforms\ios\theviewpod' do
+	project 'C:\Users\Appmetric_Laptop_001\Desktop\Appmetric\mytestapp\platforms\ios\theviewpod.xcodeproj'
 
 end

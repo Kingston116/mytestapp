@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     
 
-    <title>News App</title>
+    <title>Theviewpod App</title>
     <style>
         /*{
             margin:0;
@@ -76,8 +76,8 @@
             
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider"><a href="#main">Home</a></li>                
-                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
                 <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
@@ -98,8 +98,8 @@
         <div data-role="panel" id="left-panel-news" data-theme="b">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider"><a href="#main">Home</a></li>                
-                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
                 <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
@@ -110,6 +110,7 @@
                     </div>
                 <input type="hidden" id="location" />
                 <h2 id="title"></h2>
+                <a onclick="window.plugins.socialsharing.share('Theviewpod app', null, 'http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/logo.png', 'https://appmetricsoft.com')" style="align-self: center;">🔗share</a>
                 <div class="center-wrapper" id="backgroundTile" style="text-align:center;background-size: 100% 220px;">
                     <div id="detailedTitle" style="height:220px;"></div>
                     <audio style="width:100%" id="audio" src="" controls controlsList="nodownload">
@@ -128,24 +129,27 @@
                     </tr>
                 </table>
                     <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
-                    <div display: table; style="width: 100%;display: flex;" id="recordedComment">
-                        <audio style="width:50%;float: left;" id="recordedAudio" src="" controls
+                    <table style="width: 100%;" id="recordedComment">
+                        <tr><td style="width: 50%;">
+                        <audio style="width:120%;float: left;margin-top: 4%;height: 30px;" id="recordedAudio" src="" controls
                             controlsList="nodownload">
-                        </audio>
-                        <div style="height: 100%;font-size: 12px;width: 25%;">
+                        </audio></td><td style="width: 25%;">
+                        <div style="height: 100%;font-size: 12px;">
                         <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="OK"
-                            id="upload" data-icon="check"></div>
-                            <div style="height: 100%;font-size: 12px;width: 25%;">
+                            id="upload" data-icon="check"></div></td>
+                            <td style="width: 25%;">
+                            <div style="height: 100%;font-size: 12px;width: 100%;">
                         <input type="button" style="height: 100%;font-size: 12px;width: 100%;" data-iconpos="left" value="NO"
                         id="cancel" data-icon="delete"></div>
                         <!-- <i class="material-icons">&#xe163;</i> -->
+                    </td></tr></table>
 
                     </div>
                     <div data-role="tabs" style="width: 100%;z-index: 2;">
                         <div data-role="navbar">
                         <ul>
-                            <li id="tabComment" ><a href="#Comment" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
-                            <li id="tabPoll"><a  href="#Poll" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
+                            <li id="tabComment" ><a id="acomment" onclick="$('#Poll').hide();$('#Comment').show();" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
+                            <li id="tabPoll"><a id="apoll" onclick="$('#Poll').show();$('#Comment').hide();" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
                        </ul>   
                        
 
@@ -208,8 +212,8 @@
         <div data-role="panel" id="left-panel-aboutus" data-theme="b">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider"><a href="#main">Home</a></li>                
-                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
                 <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
@@ -232,8 +236,8 @@
         <div data-role="panel" id="left-panel-terms" data-theme="b">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
-                <li data-role="list-divider"><a href="#main">Home</a></li>                
-                <li data-role="list-divider"><a href="#aboutus">About Us</a></li>
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
+                <li data-role="list-divider"><a href="#" onClick="window.location.href='#aboutus'">About Us</a></li>
                 <li data-role="list-divider"><a href="#terms">Terms & Conditions</a></li>
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>

@@ -3,8 +3,8 @@
   "display": "standalone",
   "name": "theviewpod",
   "short_name": "theviewpod",
-  "version": "com.appmetricsoft.news",
-  "description": "A News App.",
+  "version": "com.appmetricsoft.theviewpod",
+  "description": "The view pod",
   "author": "Appmetric Team",
   "icons": [
     {

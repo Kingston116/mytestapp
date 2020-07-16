@@ -12,7 +12,9 @@ a {
 }
 
 .center-button {
-	margin: 0 auto;
+  margin: 0 auto;
+  text-transform: none;
+  
 }
 
 .ui-header .ui-title {

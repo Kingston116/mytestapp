@@ -76,7 +76,7 @@
                         audios[i].pause();
                     }
                 }                
-            }, true);
+            }, true); 
 
             document.getElementById("refreshnews").addEventListener('click', function (e) {
                 $.mobile.loading("show",{
@@ -89,7 +89,7 @@
                     var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
                     
                     for(var audiocomment in current_audio_list){
-                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:70%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
                     }
                     commentpanel+="</ul>";
                     current_comment_list = current_audio_list;
@@ -158,7 +158,7 @@
             }, true);
             $("#recordedComment").hide();
             $("#tabs").tabs();        
-            $("#ui-id-1").trigger("click");   
+            $("#acomment").trigger("click");   
 	        $("#recordSound").on("tap", function(e) {
                 e.preventDefault();
                 onPause();
@@ -188,12 +188,10 @@
 	        $("#recordSoundDialog").on("popupafterclose", function(event, ui) {
 	            clearInterval(recInterval);
 	            stopRecordingSound();
-                window.location.href = "#news";
 	        });
 
 	        $("#stopRecordingSound").on("tap", function(e) {
                 $("#recordSoundDialog").popup("close");
-                window.location.href = "#news";
 	        });
 
 	        $("#playSound").on("tap", function(e) {
@@ -352,7 +350,6 @@
                 window.location.href="index.html";
                 console.log("refresh home");
                 load_home();
-                $.mobile.loading("hide");
             });
             var li = document.getElementsByClassName("news");
 
@@ -363,6 +360,7 @@
         .catch((error) => {
             console.warn(error);
         });
+        $.mobile.loading("hide");
 
     }
 
@@ -428,7 +426,7 @@
                 var commentpanel = '<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true" style="width:100%;padding:0;">';
                 
                 for(var audiocomment in current_audio_list){
-                    commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                    commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:70%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
                 }
                 commentpanel+="</ul>";
                 current_comment_list = current_audio_list;
@@ -462,10 +460,11 @@
                         });
                     }
                     if(poll_check == "Already Voted"){
+                        console.log(polldata.answer)
                         draw_chart();
                     }
                     document.getElementById("audio").play();
-                    $("#ui-id-1").trigger("click");
+                    $("#acomment").trigger("click");
                 })
                 .catch((error) => {
                     console.warn(error);
@@ -489,6 +488,7 @@
             audioPlayer.onpause = function() {
                 isPlaying = false;
             };
+            $.mobile.loading("hide");
     }
 
     function draw_chart(){
@@ -499,7 +499,7 @@
             if(poll_check == "Already Voted"){
                 fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
                     .then((data) => {
-                        document.getElementById("options").innerHTML = '<canvas id="myChart" width="400" height="400"></canvas>';
+                        document.getElementById("options").innerHTML = '<h3 style="text-align: left;">Your answer : '+polldata.answer+'</h3><canvas id="myChart" width="400" height="400"></canvas>';
                         var ctx = document.getElementById('myChart').getContext('2d');
                         var myChart = new Chart(ctx, {
                             type: 'pie',
@@ -553,7 +553,6 @@
                                 }
                             }
                         });
-                        $.mobile.loading("hide");
                     });
             }
         });
@@ -606,7 +605,7 @@ function upload(){
             var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
             
             for(var audiocomment in current_audio_list){
-                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;" href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;" href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:70%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
             }
             commentpanel+="</ul>";
             current_comment_list = current_audio_list;
