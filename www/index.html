@@ -72,8 +72,7 @@
                 <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                 <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
-        <div data-role="panel" id="left-panel-main" data-theme="b">
-            
+        <div data-role="panel" id="left-panel-main" data-theme="b" style="position: fixed;">            
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                 <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
@@ -95,7 +94,7 @@
                 <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                     <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
-        <div data-role="panel" id="left-panel-news" data-theme="b">
+        <div data-role="panel" id="left-panel-news" data-theme="b" style="position: fixed;">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                 <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
@@ -104,13 +103,24 @@
                 <!-- <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li> -->
             </ul>
         </div>
-        <div data-role="content" style="overflow-y:auto;">
+        <div data-role="content" style="overflow-y:auto;padding-top: 0px;">
             <div data-role="fieldcontain">
                 <div id="refreshnews" class="circle-div" style="z-index: 3;text-align: center;font-size: x-large;transform: rotate(90deg);color: white;background-image: url(img/refresh.png);background-size: 70%;background-repeat: no-repeat;background-position: 40% 40%;">
                     </div>
                 <input type="hidden" id="location" />
-                <h2 id="title"></h2>
-                <a onclick="window.plugins.socialsharing.share('Theviewpod app', null, 'http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/logo.png', 'https://appmetricsoft.com')" style="align-self: center;">🔗share</a>
+                <table style="width:100%">
+                    <tbody>
+                        <tr>
+                            <td style="width:90%">
+                                <p id="news_date" style="margin: 0px;padding: 0px;font-size: xx-small;text-align: initial;color: gray;"></p>
+                                <h2 id="title" style="margin: 0px;padding: 0px;"></h2>
+                            </td>
+                            <td style="width:10%;vertical-align: bottom;">
+                                <button onclick="window.plugins.socialsharing.share('Theviewpod app', null, 'http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/logo.png', 'This is an interesting way to follow the NEWS and express your views. Try it out at Appstore link')" style="align-self: center;padding: 0px;color: white;font-weight: 300;width: 50px;height: 30px;font-size: 12px;background-color: rgb(8, 42, 162);">Share</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="center-wrapper" id="backgroundTile" style="text-align:center;background-size: 100% 220px;">
                     <div id="detailedTitle" style="height:220px;"></div>
                     <audio style="width:100%" id="audio" src="" controls controlsList="nodownload">
@@ -118,12 +128,12 @@
                     </audio>
                     <p id="buffer">Buffering : <progress max="100"></progress></p>
                     <table style="width: 100%;">
-                        <tr><td style="width: 13%;">
+                        <tr><td style="width: 10%;">
                         <button id="prev" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/prev.png);background-position: 40% center;background-size: 65%;background-repeat: no-repeat;"></button> </td>
-                        <td style="width: 84%;">
+                        <td style="width: 80%;">
                     <input type="button" id="recordSound" data-icon="audio" value="Record your view" class="center-button"
                         data-inline="true" style="text-transform: none;margin-left:5%;" /></td>
-                        <td style="width: 13%;">
+                        <td style="width: 10%;">
                         <button id="next" style="width: 50px;height:50px;border-radius: 50%;background-image: url(img/next.png);background-position: 65% center;background-size: 65%;background-repeat: no-repeat;"></button>
                     </td>
                     </tr>
@@ -131,7 +141,7 @@
                     <!--                       <input type="button" id="playSound" data-icon="refresh" value="Play" class="center-button" data-inline="true"/><br/>-->
                     <table style="width: 100%;" id="recordedComment">
                         <tr><td style="width: 50%;">
-                        <audio style="width:120%;float: left;margin-top: 4%;height: 30px;" id="recordedAudio" src="" controls
+                        <audio  preload="metadata" style="width:120%;float: left;margin-top: 4%;height: 30px;" id="recordedAudio" src="" controls
                             controlsList="nodownload">
                         </audio></td><td style="width: 25%;">
                         <div style="height: 100%;font-size: 12px;">
@@ -174,7 +184,7 @@
                             <div style="width: 100%;float: left;color: #082aa2;font-weight: 900;text-align:center;/* padding-top: 20px; */border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;vertical-align: middle;text-transform: none;">
                                 
                                 
-                                <p style="height: 30px; margin-top: 30px;">Poll </p>
+                                <p style="height: 30px;margin: 8px;">Poll </p>
                                 
                             </div>
                             <div id="detailedPoll" data-mini="true">
@@ -209,7 +219,7 @@
                 <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                     <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
-        <div data-role="panel" id="left-panel-aboutus" data-theme="b">
+        <div data-role="panel" id="left-panel-aboutus" data-theme="b" style="position: fixed;">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                 <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
@@ -220,7 +230,7 @@
         </div>
         <div data-role="content" style="overflow-y:auto;">
             <div data-role="fieldcontain">
-                <div id="about"></div>
+                <div id="about" style="text-align: justify;"></div>
             </div>
         </div>
     </div>
@@ -233,7 +243,7 @@
                 <div style="text-align-last: center;height: 100%;width:110%;margin-top: 15px;justify-content:center;display: flex;">
                     <img src="img/text.png" height="60%">&nbsp;&nbsp;<img src="img/icon.png" height="60%"></div>
         </div>
-        <div data-role="panel" id="left-panel-terms" data-theme="b">
+        <div data-role="panel" id="left-panel-terms" data-theme="b" style="position: fixed;">
             <ul data-role="listview" data-theme="d">
                 <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
                 <li data-role="list-divider"><a href="#" onClick="window.location.href='index.html'">Home</a></li>                
@@ -244,7 +254,7 @@
         </div>
         <div data-role="content" style="overflow-y:auto;">
             <div data-role="fieldcontain">
-                <div id="term">
+                <div id="term" style="text-align: justify;">
 
                 </div>
             </div>

@@ -39,6 +39,7 @@
 		4B7627AD1E5E4F9D996D20D4 /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 67828569E69049C4AB8312D7 /* SocialSharing.m */; };
 		2ED31A1C911244BBAE7AF407 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13BADCCFBF7B475C88DA29CF /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4BC4C8E70C3A4437B0D8965F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC47D5EDEE2A44199EFD713B /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FDB969EB0F134A95A0EB2AD1 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 41868268BB5E495D81D59AC6 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		66B2B95152164C25ADAB7F70 /* SocialSharing.h */ = {isa = PBXFileReference; name = "SocialSharing.h"; path = "cordova-plugin-x-socialsharing/SocialSharing.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		13BADCCFBF7B475C88DA29CF /* Social.framework */ = {isa = PBXFileReference; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		AC47D5EDEE2A44199EFD713B /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		41868268BB5E495D81D59AC6 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B18746C7BA7347678923F859 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +277,8 @@
 				67828569E69049C4AB8312D7 /* SocialSharing.m */,
 				A407485757C44FB3B28E502F /* NSString+SSURLEncoding.h */,
 				66B2B95152164C25ADAB7F70 /* SocialSharing.h */,
+				41868268BB5E495D81D59AC6 /* CDVStatusBar.m */,
+				B18746C7BA7347678923F859 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "theviewpod/Plugins";
@@ -415,6 +420,7 @@
 				A59F372F70EA42CEA85ACA12 /* CDVViewController+SplashScreen.m in Sources */,
 				3D0FD33002224B23A1F91FA8 /* NSString+SSURLEncoding.m in Sources */,
 				4B7627AD1E5E4F9D996D20D4 /* SocialSharing.m in Sources */,
+				FDB969EB0F134A95A0EB2AD1 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +441,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -460,7 +465,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
@@ -517,7 +521,6 @@
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmetricsoft.theviewpod;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Debug;
 		};
@@ -559,7 +562,6 @@
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmetricsoft.theviewpod;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Release;
 		};

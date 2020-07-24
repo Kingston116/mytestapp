@@ -8,7 +8,7 @@
   "author": "Appmetric Team",
   "icons": [
     {
-      "src": "www/img/icon.png",
+      "src": "res/icon/icon.png",
       "type": "image/png",
       "sizes": "undefinedxundefined"
     }

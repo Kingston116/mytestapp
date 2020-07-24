@@ -89,7 +89,7 @@
                     var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
                     
                     for(var audiocomment in current_audio_list){
-                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                        commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;padding:0px"><table style="width:100%"><tr style="width:100%"><td style="width:40%;"><div style="width:100%;padding-top: 4%;font-size: 11px;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div></td><td style="60%"><audio id="player-'+audiocomment+'" style="width:100%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></td></tr></table></li><hr>';
                     }
                     commentpanel+="</ul>";
                     current_comment_list = current_audio_list;
@@ -426,7 +426,7 @@
                 var commentpanel = '<ul data-role="listview" data-theme="d" data-divider-theme="d"  data-inset="true" style="width:100%;padding:0;">';
                 
                 for(var audiocomment in current_audio_list){
-                    commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div><audio id="player-'+audiocomment+'" style="width:50%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                    commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;padding:0px"><table style="width:100%"><tr style="width:100%"><td style="width:40%;"><div style="width:100%;padding-top: 4%;font-size: 11px;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div></td><td style="60%"><audio id="player-'+audiocomment+'" style="width:100%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></td></tr></table></li><hr>';
                 }
                 commentpanel+="</ul>";
                 current_comment_list = current_audio_list;
@@ -499,7 +499,7 @@
             if(poll_check == "Already Voted"){
                 fetch("http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/detailednews/"+key).then((response) => response.json())
                     .then((data) => {
-                        document.getElementById("options").innerHTML = '<h3 style="text-align: left;">Your answer : '+polldata.answer+'</h3><canvas id="myChart" width="400" height="400"></canvas>';
+                        document.getElementById("options").innerHTML = '<h3 style="text-align: left;">Your answer : '+polldata.answer+'</h3><canvas id="myChart" width="400" height="400" style="margin-top: -10%;z-index: -2;"></canvas>';
                         var ctx = document.getElementById('myChart').getContext('2d');
                         var myChart = new Chart(ctx, {
                             type: 'pie',
@@ -605,7 +605,7 @@ function upload(){
             var commentpanel = '<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="d" style="width:100%;padding:0;">';
             
             for(var audiocomment in current_audio_list){
-                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;"><div style="width:50%;padding-top: 4%;"> <a style="font-size: smaller;" href="#">'+current_audio_list[audiocomment]["time"]+' </a></div><audio id="player-'+audiocomment+'" style="width:50%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></li><hr>';
+                commentpanel += '<li data-role="fieldcontain" data-role="list-divider" style="display:flex;width: 100%;height:50px;padding:0px"><table style="width:100%"><tr style="width:100%"><td style="width:40%;"><div style="width:100%;padding-top: 4%;font-size: 11px;"> <a style="font-size: smaller;"  href="#">'+ current_audio_list[audiocomment]["time"] +'</a></div></td><td style="60%"><audio id="player-'+audiocomment+'" style="width:100%;height:30px;margin-top: 4%;" src="http://ec2-3-10-169-78.eu-west-2.compute.amazonaws.com/upload/upload/'+key+"/"+current_audio_list[audiocomment]["filename"]+'" controls controlsList="nodownload"></audio></td></tr></table></li><hr>';
             }
             commentpanel+="</ul>";
             current_comment_list = current_audio_list;
@@ -620,6 +620,12 @@ function upload(){
         $("#recordedComment").hide();
         alert("Successfully uploaded");
    }
+   
+   if(document.getElementById("recordedAudio").duration < 1 ){
+        alert("Audio should be more than 1 sec. Please try again");
+        $("#recordedComment").hide();
+        return;
+    }
 
    function onError(error) {
       alert("An error has occurred: Code = " + error.code);

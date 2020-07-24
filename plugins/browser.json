@@ -36,6 +36,9 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
     }
   },
   "dependent_plugins": {
