@@ -56,5 +56,10 @@
 	<string>This app requires photo library access to function properly.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>CDVLaunchScreen</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>fetch</string>
+	</array>
 </dict>
 </plist>

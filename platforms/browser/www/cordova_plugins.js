@@ -387,6 +387,29 @@ module.exports = [
         "id": "cordova-plugin-statusbar.StatusBarProxy",
         "pluginId": "cordova-plugin-statusbar",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode",
+        "pluginId": "cordova-plugin-background-mode",
+        "clobbers": [
+            "cordova.plugins.backgroundMode",
+            "plugin.backgroundMode"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/src/browser/BackgroundModeProxy.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode.Proxy",
+        "pluginId": "cordova-plugin-background-mode",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-streaming-media/www/StreamingMedia.js",
+        "id": "cordova-plugin-streaming-media.StreamingMedia",
+        "pluginId": "cordova-plugin-streaming-media",
+        "clobbers": [
+            "streamingMedia"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -403,7 +426,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.4",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
-    "cordova-plugin-statusbar": "2.4.3"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-background-mode": "0.7.3",
+    "cordova-plugin-streaming-media": "2.3.0"
 }
 // BOTTOM OF METADATA
 });

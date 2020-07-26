@@ -17,6 +17,9 @@
         <provider android:authorities="${applicationId}.sharing.provider" android:exported="false" android:grantUriPermissions="true" android:name="nl.xservices.plugins.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/sharing_paths" />
         </provider>
+        <service android:name="de.appplant.cordova.plugin.background.ForegroundService" />
+        <activity android:configChanges="orientation|screenSize" android:label="Simple Audio Stream" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream" />
+        <activity android:configChanges="orientation|screenSize" android:label="Simple Video Stream" android:name="com.hutchind.cordova.plugins.streamingmedia.SimpleVideoStream" />
     </application>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -25,4 +28,5 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 </manifest>

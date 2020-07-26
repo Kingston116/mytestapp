@@ -22,4 +22,8 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="exit-on-suspend" value="false" />
 </widget>

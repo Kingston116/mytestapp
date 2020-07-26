@@ -40,6 +40,13 @@
 		2ED31A1C911244BBAE7AF407 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13BADCCFBF7B475C88DA29CF /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4BC4C8E70C3A4437B0D8965F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC47D5EDEE2A44199EFD713B /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FDB969EB0F134A95A0EB2AD1 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 41868268BB5E495D81D59AC6 /* CDVStatusBar.m */; };
+		B0023FD88ADF403F8AA8553C /* APPBackgroundMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6590141C15B44703AEE81AEF /* APPBackgroundMode.m */; };
+		4FA40D0D3C704D40ACE914F3 /* APPMethodMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AAC84664194EC9B03CF718 /* APPMethodMagic.m */; };
+		7E65CF89B35A4E34AAB81342 /* appbeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56E00DB3B2804840B950A293 /* appbeep.wav */; };
+		5DFCC2962BC44B09BCFE8507 /* StreamingMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F31D02B2E94C70A3E576FF /* StreamingMedia.m */; };
+		78D9F1CA41A74F6C88E3707A /* LandscapeVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD543D5DEE8475B83519282 /* LandscapeVideo.m */; };
+		8F8ACB47123843CFAB35224C /* PortraitVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DE29D87A20244A2B683CD4F /* PortraitVideo.m */; };
+		23160A7241FF4976BC314B17 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54D8FFABB4464D3F977B0C00 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +134,18 @@
 		AC47D5EDEE2A44199EFD713B /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		41868268BB5E495D81D59AC6 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		B18746C7BA7347678923F859 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6590141C15B44703AEE81AEF /* APPBackgroundMode.m */ = {isa = PBXFileReference; name = "APPBackgroundMode.m"; path = "cordova-plugin-background-mode/APPBackgroundMode.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B6AAC84664194EC9B03CF718 /* APPMethodMagic.m */ = {isa = PBXFileReference; name = "APPMethodMagic.m"; path = "cordova-plugin-background-mode/APPMethodMagic.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		594302FB63B24D069B4CFA19 /* APPBackgroundMode.h */ = {isa = PBXFileReference; name = "APPBackgroundMode.h"; path = "cordova-plugin-background-mode/APPBackgroundMode.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BC87A196206F4E01B8BC6984 /* APPMethodMagic.h */ = {isa = PBXFileReference; name = "APPMethodMagic.h"; path = "cordova-plugin-background-mode/APPMethodMagic.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		56E00DB3B2804840B950A293 /* appbeep.wav */ = {isa = PBXFileReference; name = "appbeep.wav"; path = "appbeep.wav"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		98F31D02B2E94C70A3E576FF /* StreamingMedia.m */ = {isa = PBXFileReference; name = "StreamingMedia.m"; path = "cordova-plugin-streaming-media/StreamingMedia.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		BBD543D5DEE8475B83519282 /* LandscapeVideo.m */ = {isa = PBXFileReference; name = "LandscapeVideo.m"; path = "cordova-plugin-streaming-media/LandscapeVideo.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6DE29D87A20244A2B683CD4F /* PortraitVideo.m */ = {isa = PBXFileReference; name = "PortraitVideo.m"; path = "cordova-plugin-streaming-media/PortraitVideo.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		D7641C140FB6429CAD2C919E /* StreamingMedia.h */ = {isa = PBXFileReference; name = "StreamingMedia.h"; path = "cordova-plugin-streaming-media/StreamingMedia.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		094461C3763E41CFA804FB55 /* LandscapeVideo.h */ = {isa = PBXFileReference; name = "LandscapeVideo.h"; path = "cordova-plugin-streaming-media/LandscapeVideo.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E91FB639B8B9454D9F70AA10 /* PortraitVideo.h */ = {isa = PBXFileReference; name = "PortraitVideo.h"; path = "cordova-plugin-streaming-media/PortraitVideo.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		54D8FFABB4464D3F977B0C00 /* MediaPlayer.framework */ = {isa = PBXFileReference; name = "MediaPlayer.framework"; path = "System/Library/Frameworks/MediaPlayer.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +162,7 @@
 				F0B45454095A4EBE8138BCB8 /* CoreTelephony.framework in Frameworks */,
 				2ED31A1C911244BBAE7AF407 /* Social.framework in Frameworks */,
 				4BC4C8E70C3A4437B0D8965F /* MessageUI.framework in Frameworks */,
+				23160A7241FF4976BC314B17 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +226,7 @@
 				8D1107310486CEB800E47090 /* theviewpod-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
 				C92A3FD7C3A14E5FBEA08973 /* CDVCapture.bundle */,
+				56E00DB3B2804840B950A293 /* appbeep.wav */,
 			);
 			name = Resources;
 			path = "theviewpod/Resources";
@@ -222,6 +243,7 @@
 				18888D2DB3A04303ADE75E9C /* CoreTelephony.framework */,
 				13BADCCFBF7B475C88DA29CF /* Social.framework */,
 				AC47D5EDEE2A44199EFD713B /* MessageUI.framework */,
+				54D8FFABB4464D3F977B0C00 /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,6 +301,16 @@
 				66B2B95152164C25ADAB7F70 /* SocialSharing.h */,
 				41868268BB5E495D81D59AC6 /* CDVStatusBar.m */,
 				B18746C7BA7347678923F859 /* CDVStatusBar.h */,
+				6590141C15B44703AEE81AEF /* APPBackgroundMode.m */,
+				B6AAC84664194EC9B03CF718 /* APPMethodMagic.m */,
+				594302FB63B24D069B4CFA19 /* APPBackgroundMode.h */,
+				BC87A196206F4E01B8BC6984 /* APPMethodMagic.h */,
+				98F31D02B2E94C70A3E576FF /* StreamingMedia.m */,
+				BBD543D5DEE8475B83519282 /* LandscapeVideo.m */,
+				6DE29D87A20244A2B683CD4F /* PortraitVideo.m */,
+				D7641C140FB6429CAD2C919E /* StreamingMedia.h */,
+				094461C3763E41CFA804FB55 /* LandscapeVideo.h */,
+				E91FB639B8B9454D9F70AA10 /* PortraitVideo.h */,
 			);
 			name = Plugins;
 			path = "theviewpod/Plugins";
@@ -373,6 +405,7 @@
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 				A9CDCE69325B4720A5EC4858 /* CDVCapture.bundle in Resources */,
+				7E65CF89B35A4E34AAB81342 /* appbeep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +454,11 @@
 				3D0FD33002224B23A1F91FA8 /* NSString+SSURLEncoding.m in Sources */,
 				4B7627AD1E5E4F9D996D20D4 /* SocialSharing.m in Sources */,
 				FDB969EB0F134A95A0EB2AD1 /* CDVStatusBar.m in Sources */,
+				B0023FD88ADF403F8AA8553C /* APPBackgroundMode.m in Sources */,
+				4FA40D0D3C704D40ACE914F3 /* APPMethodMagic.m in Sources */,
+				5DFCC2962BC44B09BCFE8507 /* StreamingMedia.m in Sources */,
+				78D9F1CA41A74F6C88E3707A /* LandscapeVideo.m in Sources */,
+				8F8ACB47123843CFAB35224C /* PortraitVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

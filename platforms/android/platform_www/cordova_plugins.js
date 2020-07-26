@@ -335,6 +335,23 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "cordova-plugin-background-mode.BackgroundMode",
+      "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+      "pluginId": "cordova-plugin-background-mode",
+      "clobbers": [
+        "cordova.plugins.backgroundMode",
+        "plugin.backgroundMode"
+      ]
+    },
+    {
+      "id": "cordova-plugin-streaming-media.StreamingMedia",
+      "file": "plugins/cordova-plugin-streaming-media/www/StreamingMedia.js",
+      "pluginId": "cordova-plugin-streaming-media",
+      "clobbers": [
+        "streamingMedia"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -349,6 +366,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-network-information": "2.0.2",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
-    "cordova-plugin-statusbar": "2.4.3"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-background-mode": "0.7.3",
+    "cordova-plugin-streaming-media": "2.3.0"
   };
 });

@@ -38,6 +38,15 @@
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="BackgroundMode">
+        <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode" />
+    </feature>
+    <feature name="BackgroundModeExt">
+        <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundModeExt" />
+    </feature>
+    <feature name="StreamingMedia">
+        <param name="android-package" value="com.hutchind.cordova.plugins.streamingmedia.StreamingMedia" />
+    </feature>
     <name>theviewpod</name>
     <description>
         The view pod
@@ -79,4 +88,6 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="exit-on-suspend" value="false" />
 </widget>

@@ -158,21 +158,21 @@
                     <div data-role="tabs" style="width: 100%;z-index: 2;">
                         <div data-role="navbar">
                         <ul>
-                            <li id="tabComment" ><a id="acomment" onclick="$('#Poll').hide();$('#Comment').show();" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
-                            <li id="tabPoll"><a id="apoll" onclick="$('#Poll').show();$('#Comment').hide();" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
+                            
+                            <li id="tabPoll"><a id="apoll" onclick="$('#Poll').show();$('#Comment').hide();$('#TextComment').hide();" class="ui-btn-active" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Poll</a></li>
+                            <li id="tabComment" ><a id="acomment" onclick="$('#Poll').hide();$('#Comment').show();$('#TextComment').hide();" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Audio</a></li>
+                            <li id="tabText"><a id="aText" onclick="$('#Poll').hide();$('#Comment').hide();$('#TextComment').show();" style="-webkit-box-shadow: 0 0 0px #38c;box-shadow: 0 0 0px #38c;">Comments</a></li>
                        </ul>   
                        
 
                         <div id="Comment">
                             <div style="width: 100%;float: left;color: #082aa2;font-weight: 900;text-align:center;/* padding-top: 20px; */border-bottom-color: red;border-bottom-width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;vertical-align: middle;text-transform: none;">
                             
-                                <table>
+                                <table style="width: 100%;">
                                     <tr style="height: 30px">
-                                        <td style="width: 80%;vertical-align: bottom;">
-                                            <p style="height: 30px;">All Views </p>
-                                        </td>
-                                        <td style="width: 20%;height: 30px">
-                                            <input type="button" value="▶ Play all" id="playAll" data-mini="true">
+                                        
+                                        <td style="width: 100%;height: 30px">
+                                            <input type="button" value="▶ Play all comments" id="playAll" data-mini="true">
                                         </td>
                                     </tr>
                                 </table>
@@ -190,6 +190,18 @@
                             <div id="detailedPoll" data-mini="true">
                                 <h3 id="Question">Question ?:</h3>
                                 <div id="options"></div>
+                            </div>
+                        </div>
+                        <div id="TextComment" >
+                            <table style="width: 100%;border-color: #fb6060;border-bottom: solid;border-width: 5px;border-color: #b32929;"><tr><td style="width: 80%;">
+                                <textarea name="textarea-1" id="textarea-comment"></textarea></td>
+                                <td style="width: 20%;vertical-align: bottom;">
+                                    <input type="button" value="Post" id="postComment" data-mini="true">
+                                </td>
+                                </tr>
+                            </table>
+                            <div id="txtComments">
+
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,67 @@
+{
+  "_from": "cordova-plugin-background-mode-fixed",
+  "_id": "cordova-plugin-background-mode-fixed@0.7.8",
+  "_inBundle": false,
+  "_integrity": "sha512-mJjTp49kOXdbTy9R7ymPjuVzCaBWu38IPlA4H+LshTTnlW4dGGjsvmU5XXLyEfOQnYiJRKYbVJ/OOxNtmwwLhg==",
+  "_location": "/cordova-plugin-background-mode-fixed",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-background-mode-fixed",
+    "name": "cordova-plugin-background-mode-fixed",
+    "escapedName": "cordova-plugin-background-mode-fixed",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-background-mode-fixed/-/cordova-plugin-background-mode-fixed-0.7.8.tgz",
+  "_shasum": "c64043d92425b4bb513da0afd5bb02a834646135",
+  "_spec": "cordova-plugin-background-mode-fixed",
+  "_where": "C:\\Users\\Appmetric_Laptop_001\\Desktop\\Appmetric\\mytestapp",
+  "author": {
+    "name": "Sebastián Katzer"
+  },
+  "bugs": {
+    "url": "https://github.com/katzer/cordova-plugin-background-mode/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-background-mode-fixed",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Prevent apps from going to sleep in background. iOS fix.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    },
+    {
+      "name": "android-sdk",
+      "version": ">=16"
+    }
+  ],
+  "homepage": "https://github.com/katzer/cordova-plugin-background-mode#readme",
+  "keywords": [
+    "appplant",
+    "background",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-background-mode-fixed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katzer/cordova-plugin-background-mode.git"
+  },
+  "version": "0.7.8"
+}

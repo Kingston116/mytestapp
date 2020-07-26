@@ -33,7 +33,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
-
+    <preference name="KeepRunning" value="true" />
+    <preference name="exit-on-suspend" value="false" />
     <icon src="res/icon/icon.png" />
     <platform name="android">
         <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />

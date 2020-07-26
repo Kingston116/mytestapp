@@ -55,6 +55,22 @@
             {
               "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"BackgroundMode\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.background.BackgroundMode\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"BackgroundModeExt\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.background.BackgroundModeExt\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"KeepRunning\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"StreamingMedia\"><param name=\"android-package\" value=\"com.hutchind.cordova.plugins.streamingmedia.StreamingMedia\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -100,6 +116,28 @@
           "/manifest/application": [
             {
               "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
+              "count": 1
+            },
+            {
+              "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:configChanges=\"orientation|screenSize\" android:label=\"Simple Audio Stream\" android:name=\"com.hutchind.cordova.plugins.streamingmedia.SimpleAudioStream\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:configChanges=\"orientation|screenSize\" android:label=\"Simple Video Stream\" android:name=\"com.hutchind.cordova.plugins.streamingmedia.SimpleVideoStream\" />",
+              "count": 1
+            }
+          ],
+          "/manifest": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
               "count": 1
             }
           ]
@@ -162,6 +200,12 @@
       "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
     },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
+    },
+    "cordova-plugin-streaming-media": {
       "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
     }
   },
@@ -502,6 +546,23 @@
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "cordova-plugin-background-mode.BackgroundMode",
+      "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+      "pluginId": "cordova-plugin-background-mode",
+      "clobbers": [
+        "cordova.plugins.backgroundMode",
+        "plugin.backgroundMode"
+      ]
+    },
+    {
+      "id": "cordova-plugin-streaming-media.StreamingMedia",
+      "file": "plugins/cordova-plugin-streaming-media/www/StreamingMedia.js",
+      "pluginId": "cordova-plugin-streaming-media",
+      "clobbers": [
+        "streamingMedia"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -516,6 +577,8 @@
     "cordova-plugin-network-information": "2.0.2",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
-    "cordova-plugin-statusbar": "2.4.3"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-background-mode": "0.7.3",
+    "cordova-plugin-streaming-media": "2.3.0"
   }
 }

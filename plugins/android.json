@@ -40,6 +40,12 @@
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
+    },
+    "cordova-plugin-streaming-media": {
+      "PACKAGE_NAME": "com.appmetricsoft.theviewpod"
     }
   },
   "dependent_plugins": {

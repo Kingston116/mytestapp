@@ -17,6 +17,8 @@
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-audioinput": "^1.0.2",
+    "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
+    "cordova-plugin-background-mode-fixed": "^0.7.8",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-file-transfer": "^1.7.1",
@@ -25,6 +27,7 @@
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-streaming-media": "git+https://github.com/nchutchind/cordova-plugin-streaming-media.git",
     "cordova-plugin-x-socialsharing": "^5.6.8",
     "es6-promise-plugin": "^4.2.2"
   },
@@ -45,7 +48,9 @@
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
       },
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-background-mode": {},
+      "cordova-plugin-streaming-media": {}
     },
     "platforms": [
       "android",

@@ -96,5 +96,29 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-background-mode": {
+    "source": {
+      "type": "registry",
+      "id": "git+https://github.com/katzer/cordova-plugin-background-mode.git"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-background-mode-fixed": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-background-mode-fixed"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-streaming-media": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/nchutchind/cordova-plugin-streaming-media"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
